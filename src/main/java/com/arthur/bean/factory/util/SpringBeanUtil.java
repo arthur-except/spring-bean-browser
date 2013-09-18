@@ -52,7 +52,12 @@ public class SpringBeanUtil {
 		BeanFactoryUtils.beanNamesIncludingAncestors(beanFactory);
 		return Arrays.asList(beanFactory.getBeanDefinitionNames());
 	}
-
+	
+	public static String[] beanNamesIncludingAncestors(){
+		return BeanFactoryUtils.beanNamesIncludingAncestors(beanFactory);
+	}
+	
+ 
 	/**
 	 * Return the names of all beans that this specificed bean dependens on, if
 	 * any.
