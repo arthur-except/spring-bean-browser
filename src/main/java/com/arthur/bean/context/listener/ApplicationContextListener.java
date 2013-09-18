@@ -6,7 +6,7 @@ import javax.servlet.ServletContextListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.arthur.bean.factory.util.SpringBeanUtil;
+import com.arthur.bean.factory.util.SpringBeanUtils;
 
 public class ApplicationContextListener implements ServletContextListener {
 	
@@ -14,12 +14,12 @@ public class ApplicationContextListener implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent sce) {
 		LOGGER.info("initing webApplicationContext...");
-		SpringBeanUtil.init(sce.getServletContext());
+		SpringBeanUtils.init(sce.getServletContext());
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
 		LOGGER.info("destory webApplicationContext...");
-		SpringBeanUtil.destory();
+		SpringBeanUtils.destory();
 	}
 
 }
