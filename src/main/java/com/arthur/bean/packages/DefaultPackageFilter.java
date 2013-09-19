@@ -26,7 +26,7 @@ public class DefaultPackageFilter implements PackageFilter, InitializingBean {
 
 	public void afterPropertiesSet() throws Exception {
 		if (ignorePackages == null) {
-			// User not config ignorePackagse, user defualt.
+			// No config ignorePackagse, user defualt.
 			this.initDefaultIgorePackage();
 		}
 	}

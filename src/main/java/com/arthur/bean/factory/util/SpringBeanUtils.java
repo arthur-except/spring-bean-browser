@@ -17,8 +17,6 @@ public class SpringBeanUtils {
 
 	private static WebApplicationContext wac;
 
-	
-
 	public static void init(ServletContext sc) {
 		SpringBeanUtils.wac = WebApplicationContextUtils
 				.getWebApplicationContext(sc);
@@ -73,16 +71,16 @@ public class SpringBeanUtils {
 	 * @param beanName
 	 * @return
 	 */
-	public static String[] getDependentBean(String beanName) {
+	public static String[] getDependentBeans(String beanName) {
 		return beanFactory.getDependentBeans(beanName);
 	}
 
-	public static Map<String, ?> getBeanOfType(Class<?> beanType) {
+	public static <T> Map<String, T> getBeanOfType(Class<T> beanType) {
 		// BeanFactoryUtils
 		return beanFactory.getBeansOfType(beanType);
 	}
 
-	public static Map<String, ?> beanOgTypeIncludingAncestor(Class<?> beanType) {
+	public static <T> Map<String, T> beanOfTypeIncludingAncestor(Class<T> beanType) {
 		return BeanFactoryUtils.beansOfTypeIncludingAncestors(beanFactory,
 				beanType);
 	}
@@ -92,9 +90,9 @@ public class SpringBeanUtils {
 				beanType);
 	}
 
-	public static void beanOfType(Class<?> beanType,
+	public static <T> T beanOfType(Class<T> beanType,
 			boolean includeNonSingletons, boolean allowEagerInit) {
-		BeanFactoryUtils.beanOfType(beanFactory, beanType,
+		return BeanFactoryUtils.beanOfType(beanFactory, beanType,
 				includeNonSingletons, allowEagerInit);
 	}
 
@@ -106,5 +104,8 @@ public class SpringBeanUtils {
 		return BeanFactoryUtils.countBeansIncludingAncestors(beanFactory);
 	}
 
+	public static Object getBeanByName(String beanName) {
+		return beanFactory.getBean(beanName);
+	}
 
 }
